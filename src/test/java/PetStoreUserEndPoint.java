@@ -4,8 +4,6 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import model.User;
 
-import static io.restassured.RestAssured.given;
-
 public class PetStoreUserEndPoint {
 
     public Response getUserByUserName(String username) {
