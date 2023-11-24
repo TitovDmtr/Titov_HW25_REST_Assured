@@ -1,3 +1,5 @@
+package config;
+
 public class Config {
     public static final String PETSTORE_BASE_URL = "https://petstore.swagger.io/v2";
     public static final String PET_BY_ID = "/pet/{petId}";

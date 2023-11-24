@@ -1,0 +1,31 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="SimpleTest suite name">
+    <test name="SimpleTest test name">
+        <!--        <packages>-->
+        <!--            <package name="org.example.uitests"></package>-->
+        <!--        </packages>-->
+
+<!--                <groups>-->
+<!--                    <define name="all">-->
+<!--                        <include name="smoke"/>-->
+<!--                        <include name="regression"/>-->
+<!--                    </define>-->
+
+<!--                    <run>-->
+<!--                        <include name="all"/>-->
+<!--                        <include name="regression"/>-->
+<!--                        <exclude name="smoke"/>-->
+<!--                    </run>-->
+<!--                </groups>-->
+<!--        <parameter name="myName" value="Lena"/>-->
+
+        <classes>
+            <class name="tests.CrudTests"/>
+<!--            <class name="org.example.uitests.SimpleTests"/>-->
+<!--            <class name="org.example.uitests.ExceptionTests"/>-->
+        </classes>
+
+    </test>
+</suite>

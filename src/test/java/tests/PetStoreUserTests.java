@@ -1,7 +1,10 @@
+package tests;
+
+import endpoints.PetStoreUserEndPoint;
 import io.restassured.response.Response;
 import model.User;
-import org.junit.Assert;
-import org.junit.Test;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class PetStoreUserTests {
 
@@ -9,7 +12,7 @@ public class PetStoreUserTests {
     public void verifyUserCanBeCreated() {
         User user = new User();
         user.setId(34);
-        user.setUsername("Vasya");
+        user.setUsername("testuser");
         user.setFirstName("Vasyl");
         user.setLastName("Tymchenko");
         user.setEmail("vasya@ukr.net");
@@ -27,8 +30,8 @@ public class PetStoreUserTests {
 
     @Test
     public void verifyUserIdAfterCreation() {
-        User testUser = User.createTestUser(
-                35,
+        User testUser = User.createUpdateTestUserData(
+                34,
                 "testuser",
                 "Dmytro",
                 "T",
@@ -41,20 +44,20 @@ public class PetStoreUserTests {
 
         Response userGetResponse = new PetStoreUserEndPoint().getUserByUserName("testuser");
         User userFromService = userGetResponse.body().as(User.class);
-        Assert.assertEquals(35, userFromService.getId());
+        Assert.assertEquals(userFromService.getId(),34);
     }
 
     @Test
     public void verifyUserDeletion() {
-        User testUser = User.createTestUser(37, "testuser1", "D", "Titov", "dtitov@test.com", "654321", "0994444444", 0);
+        User testUser = User.createUpdateTestUserData(37, "testuser1", "D", "Titov", "dtitov@test.com", "654321", "0994444444", 0);
         Response userCreateResponse = new PetStoreUserEndPoint().createUser(testUser);
         Assert.assertEquals(userCreateResponse.statusCode(), 200);
 
         Response userDeleteResponse = new PetStoreUserEndPoint().deleteByUserName("testuser1");
-        Assert.assertEquals(200, userDeleteResponse.statusCode());
+        Assert.assertEquals(userDeleteResponse.statusCode(), 200);
 
         Response userGetResponse = new PetStoreUserEndPoint().getUserByUserName("testuser1");
-        Assert.assertEquals(404, userGetResponse.statusCode());
+        Assert.assertEquals(userGetResponse.statusCode(), 404);
         System.out.println("Check user response code after deletion: " + userGetResponse.statusCode());
     }
 }

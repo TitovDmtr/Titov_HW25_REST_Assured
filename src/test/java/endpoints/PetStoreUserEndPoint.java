@@ -1,3 +1,6 @@
+package endpoints;
+
+import config.Config;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -19,6 +22,14 @@ public class PetStoreUserEndPoint {
                 .body(user)
                 .when()
                 .post(Config.CREATE_USER)
+                .then().extract().response();
+    }
+
+    public Response updateUser(User user, String username) {
+        return given()
+                .body(user)
+                .when()
+                .put(Config.UPDATE_USER, username)
                 .then().extract().response();
     }
 

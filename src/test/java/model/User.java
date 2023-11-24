@@ -74,7 +74,7 @@ public class User {
         this.userStatus = userStatus;
     }
 
-    public static User createTestUser(long id, String username, String firstName, String lastName, String email, String password, String phone, long userStatus) {
+    public static User createUpdateTestUserData(long id, String username, String firstName, String lastName, String email, String password, String phone, long userStatus) {
         User user = new User();
         user.setId(id);
         user.setUsername(username);
